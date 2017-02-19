@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class PhotonInit : MonoBehaviour {
 
-	public Text state;
-	public Button aa;
 
 	void Awake()
 	{
@@ -15,7 +13,6 @@ public class PhotonInit : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		state.text = PhotonNetwork.connectionStateDetailed.ToString();
 		//PhotonNetwork.CreateRoom("MyMatch");
 		//OnConnectedToMaster();
 	}

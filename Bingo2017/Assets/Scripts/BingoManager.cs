@@ -21,9 +21,6 @@ public class BingoManager : MonoBehaviour {
 	public Text bb;
 	int bbcount;
 	ArrayList NumberList = new ArrayList();
-	
-	public Button ischeck;
-	public Button ischeck2;
 
    	int diagonalL;
     int diagonalR;
@@ -56,7 +53,6 @@ public class BingoManager : MonoBehaviour {
 				blockCount++;
 			}
 		}
-		ischeck2.onClick.AddListener(check1);
 		Debug.Log(NumberList.Count);
 		
 	}
