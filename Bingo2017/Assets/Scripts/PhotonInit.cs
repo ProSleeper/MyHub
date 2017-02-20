@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PhotonInit : MonoBehaviour {
 
-	public Text roomUser;
 
 	void Awake()
 	{
@@ -57,11 +56,6 @@ public class PhotonInit : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log(Time.time);
-		if (Time.time > 5.0f)
-		{
-			roomUser.text = "Room User Count: " +  PhotonNetwork.room.PlayerCount.ToString();
-		}
 		
 	}
 }
