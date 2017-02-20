@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 62092956a7092454bad32252e7e9a94d
+timeCreated: 1487592094
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KoPubDotum Medium
+  fontNames:
+  - KoPubDotum Medium
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

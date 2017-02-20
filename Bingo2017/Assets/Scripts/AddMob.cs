@@ -10,6 +10,7 @@ public class AddMob : MonoBehaviour {
  
     void Start ()
     {
+        DontDestroyOnLoad(this.gameObject);
         if (adBannerView == null)
         {
             AdRequest.Builder builder = new AdRequest.Builder();

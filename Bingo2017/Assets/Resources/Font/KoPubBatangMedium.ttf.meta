@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 5f0083f30bd366145a5bcd6541542aa8
+timeCreated: 1487592071
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KoPubBatang Medium
+  fontNames:
+  - KoPubBatang Medium
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
