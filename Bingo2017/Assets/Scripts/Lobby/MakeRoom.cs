@@ -10,6 +10,16 @@ public class MakeRoom : MonoBehaviour {
 	Transform room_01;
 	string str;
 
+
+	void Start()
+	{
+		//PhotonInit.Instance.OnCreateRoom(" ");
+	}
+
+	void Update()
+	{
+		//PhotonInit.Instance.OnCreateRoom(" ");
+	}
 	// void Start()
 	// {
 	// 	parent = GameObject.Find("Canvas");
@@ -26,5 +36,6 @@ public class MakeRoom : MonoBehaviour {
 	public void OnClickStartBtn()
 	{
 		PhotonInit.Instance.OnClickStartBtn();
+		
 	}
 }

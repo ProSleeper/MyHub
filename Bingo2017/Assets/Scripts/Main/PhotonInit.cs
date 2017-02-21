@@ -29,9 +29,27 @@ public class PhotonInit : MonoBehaviour {
     }
 	//여기까지 싱글톤 코드
 
+
+
+	void Update()
+	{
+		if (PhotonNetwork.connected)
+		{
+			GameObject.Find("ServerOnOff").GetComponent<Text>().text = "Server : On";
+		}
+		else
+		{
+			GameObject.Find("ServerOnOff").GetComponent<Text>().text = "Server : Off";
+			//PhotonNetwork.ConnectUsingSettings("v0.9");
+			PhotonNetwork.Reconnect();
+		}
+		
+	}
+
 	void OnJoinedLobby()
 	{
 		Debug.Log("Join Lobby");
+		
 		//PhotonNetwork.CreateRoom("MyMatch");
 	}
 
@@ -49,19 +67,23 @@ public class PhotonInit : MonoBehaviour {
 	void OnJoinedRoom()
 	{
 		Debug.Log("Join Room");
-		
 	}
 
 	public void OnClickStartBtn()
 	{
-		Debug.Log("name: " + PhotonNetwork.room.Name);
-		Debug.Log("playerCount: " + PhotonNetwork.room.PlayerCount);
-		Debug.Log("roomCount: " + PhotonNetwork.countOfRooms);
-		Debug.Log("roomCount: " + PhotonNetwork.GetRoomList().Length);
+		//Debug.Log("name: " + PhotonNetwork.room.Name);
+		//Debug.Log("playerCount: " + PhotonNetwork.room.PlayerCount);
+		Debug.Log("Lobby-count: " + PhotonNetwork.countOfPlayers);
+		//Debug.Log("roomCount-Length: " + PhotonNetwork.GetRoomList().Length);
 	}
 	
 	public void OnCreateRoom(string RoomName)
 	{
-		PhotonNetwork.CreateRoom(RoomName);
+		if (PhotonNetwork.connected)
+		{
+			Debug.Log("Lobby-count: " + PhotonNetwork.countOfPlayers);
+			//Debug.Log("createRoom");
+			//PhotonNetwork.CreateRoom(RoomName);
+		}
 	}
 }
