@@ -1,11 +1,11 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{60810FD3-3C79-6FE1-0EAB-2097A0309081}") = "Bingo2017", "Assembly-CSharp-firstpass.csproj", "{E358BFB5-C5E5-5881-27BE-6C21A32DBB46}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bingo2017", "Assembly-CSharp-firstpass.csproj", "{E358BFB5-C5E5-5881-27BE-6C21A32DBB46}"
 EndProject
-Project("{60810FD3-3C79-6FE1-0EAB-2097A0309081}") = "Bingo2017", "Assembly-CSharp.csproj", "{DD727AD2-1674-556A-F21E-252493A20BA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bingo2017", "Assembly-CSharp.csproj", "{DD727AD2-1674-556A-F21E-252493A20BA0}"
 EndProject
-Project("{60810FD3-3C79-6FE1-0EAB-2097A0309081}") = "Bingo2017", "Assembly-CSharp-Editor.csproj", "{CD8B4570-79B5-6C44-6B3F-6B132B8FEBB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bingo2017", "Assembly-CSharp-Editor.csproj", "{CD8B4570-79B5-6C44-6B3F-6B132B8FEBB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
