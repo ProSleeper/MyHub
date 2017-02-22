@@ -241,11 +241,14 @@
      <Compile Include="Assets\Scripts\InGame\SwapImage.cs" />
      <Compile Include="Assets\Scripts\Lobby\BackMove.cs" />
      <Compile Include="Assets\Scripts\Lobby\FrontMove.cs" />
+     <Compile Include="Assets\Scripts\Lobby\JoinRoom.cs" />
      <Compile Include="Assets\Scripts\Lobby\MakeRoom.cs" />
      <Compile Include="Assets\Scripts\Main\AddMob.cs" />
      <Compile Include="Assets\Scripts\Main\PhotonInit.cs" />
      <Compile Include="Assets\Scripts\Main\SceneMove.cs" />
      <Compile Include="Assets\Scripts\Main\SoundOnOff.cs" />
+     <Compile Include="Assets\Scripts\TempScripts\LobbyCount.cs" />
+     <Compile Include="Assets\Scripts\TempScripts\Roomintfo.cs" />
      <None Include="Assets\Photon Unity Networking\Demos\MarcoPolo-Tutorial\marcopolo-readme.txt" />
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />

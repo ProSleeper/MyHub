@@ -5,20 +5,23 @@ using UnityEngine.UI;
 
 public class MakeRoom : MonoBehaviour {
 
-	//public Button myBtn;
+	public Text MyText;
 	GameObject parent;
 	Transform room_01;
 	string str;
 
-
 	void Start()
 	{
-		//PhotonInit.Instance.OnCreateRoom(" ");
+		Button btn = this.GetComponent<Button>();
+		btn.onClick.AddListener(RoomMake);
+		PhotonInit.Instance.RoomDisplay();
 	}
 
 	void Update()
 	{
 		//PhotonInit.Instance.OnCreateRoom(" ");
+		Debug.Log("InRoom: " + PhotonNetwork.inRoom);
+		//Debug.Log(PhotonNetwork.connectionStateDetailed);
 	}
 	// void Start()
 	// {
@@ -33,9 +36,14 @@ public class MakeRoom : MonoBehaviour {
 		
 	// }
 
-	public void OnClickStartBtn()
+	void RoomMake()
 	{
-		PhotonInit.Instance.OnClickStartBtn();
+		Debug.Log(MyText.text);
+		//룸을 만들면 만든 본인은 룸 안으로 들어가기 때문에 본인은 룸을 볼 수 가 없음
+		if (!(MyText.text == ""))
+		{
+			PhotonInit.Instance.OnCreateRoom(MyText.text);
+		}
 		
 	}
 }

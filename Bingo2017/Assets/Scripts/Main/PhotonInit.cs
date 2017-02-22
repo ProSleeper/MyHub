@@ -2,88 +2,149 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class PhotonInit : MonoBehaviour {
-
-	//public Text roomUser;
+using UnityEngine.SceneManagement;
 
 
-	//싱글톤 코드
-	public static PhotonInit Instance;
+public class PhotonInit : MonoBehaviour
+{
 
-	void Awake()
-	{
-		this.InstantiateController();
-	}
+    public GameObject roomObject;
 
-	private void InstantiateController() {
-        if(Instance == null)
+    //싱글톤 코드
+    public static PhotonInit Instance;
+
+    void Awake()
+    {
+        this.InstantiateController();
+    }
+
+    private void InstantiateController()
+    {
+        if (Instance == null)
         {
             Instance = this;
-			PhotonNetwork.ConnectUsingSettings("v0.9");
+            //PhotonNetwork.ConnectUsingSettings("v0.9");
             DontDestroyOnLoad(this);
         }
-        else if(this != Instance) {
+        else if (this != Instance)
+        {
             Destroy(this.gameObject);
         }
     }
-	//여기까지 싱글톤 코드
+    //여기까지 싱글톤 코드
 
 
 
-	void Update()
-	{
-		if (PhotonNetwork.connected)
+    void ServerConnect()
+    {
+		if( isPaused )
 		{
-			GameObject.Find("ServerOnOff").GetComponent<Text>().text = "Server : On";
+			Debug.Log("Disconnect");
+			//PhotonNetwork.Disconnect();
 		}
-		else
+		else if((!isPaused) && (!PhotonNetwork.connected))
 		{
-			GameObject.Find("ServerOnOff").GetComponent<Text>().text = "Server : Off";
-			//PhotonNetwork.ConnectUsingSettings("v0.9");
-			PhotonNetwork.Reconnect();
+			Debug.Log("Connect");
+			PhotonNetwork.ConnectUsingSettings("v0.9");
 		}
-		
-	}
+    }
 
-	void OnJoinedLobby()
-	{
-		Debug.Log("Join Lobby");
-		
-		//PhotonNetwork.CreateRoom("MyMatch");
-	}
+    bool isPaused = false;
 
-	// void OnPhotonRandomJoinFailed()
-	// {
+	//앱이 현재 실행중인지 아닌지 판단.. 현재 실행중이라면 hasFocus 가 true 실행중이지 않다면 hasFocus false
+    void OnApplicationFocus( bool hasFocus )
+    {
+        isPaused = !hasFocus;
+		ServerConnect();
+    }
+	void OnApplicationQuit()
+    {
+        Debug.Log("Quit");
+    }
+
+    void OnJoinedLobby()
+    {
+        Debug.Log("Join Lobby");
+        //PhotonNetwork.CreateRoom("MyMatch");
+    }
+
+    // void OnPhotonRandomJoinFailed()
+    // {
     // 	Debug.Log("No Room");
     // 	PhotonNetwork.CreateRoom("MyMatch");
-	// }
+    // }
 
-	// void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
-	// {
-	// 	Debug.Log(PhotonNetwork.room.PlayerCount);
-	// }
+    // void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
+    // {
+    // 	Debug.Log(PhotonNetwork.room.PlayerCount);
+    // }
 
-	void OnJoinedRoom()
-	{
-		Debug.Log("Join Room");
-	}
+    void OnJoinedRoom()
+    {
+        Debug.Log("Join Room");
+        SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
-	public void OnClickStartBtn()
-	{
-		//Debug.Log("name: " + PhotonNetwork.room.Name);
-		//Debug.Log("playerCount: " + PhotonNetwork.room.PlayerCount);
-		Debug.Log("Lobby-count: " + PhotonNetwork.countOfPlayers);
-		//Debug.Log("roomCount-Length: " + PhotonNetwork.GetRoomList().Length);
-	}
-	
-	public void OnCreateRoom(string RoomName)
-	{
-		if (PhotonNetwork.connected)
-		{
-			Debug.Log("Lobby-count: " + PhotonNetwork.countOfPlayers);
-			//Debug.Log("createRoom");
-			//PhotonNetwork.CreateRoom(RoomName);
-		}
-	}
+    public void OnClickStartBtn()
+    {
+        //Debug.Log("name: " + PhotonNetwork.room.Name);
+        //Debug.Log("playerCount: " + PhotonNetwork.room.PlayerCount);
+        Debug.Log("Lobby-count: " + PhotonNetwork.countOfPlayers);
+        //Debug.Log("roomCount-Length: " + PhotonNetwork.GetRoomList().Length);
+    }
+
+    public void OnCreateRoom(string RoomName)
+    {
+        
+        if (PhotonNetwork.connected)
+        {
+            RoomOptions roomOption = new RoomOptions();
+
+            roomOption.IsOpen = true;
+            roomOption.IsVisible = true;
+            roomOption.MaxPlayers = 2;
+        	PhotonNetwork.CreateRoom(RoomName, roomOption, TypedLobby.Default);
+        }
+        // else
+        // {
+        // 	접속이 안됐을때 나타내기
+        // }
+    }
+    public void OnReceivedRoomListUpdate()
+    {
+        Debug.Log("RoomUpdate");
+        Debug.Log(PhotonNetwork.GetRoomList().Length);
+    }
+
+    public void RoomDisplay()
+    {
+        foreach (RoomInfo room in PhotonNetwork.GetRoomList())
+        {
+            Debug.Log(room.Name);
+            GameObject Rooms = Instantiate(roomObject);
+
+            Roomintfo roomdata = Rooms.GetComponent<Roomintfo>();
+            roomdata.roomName = room.Name;
+            roomdata.WriteRoomName();
+            Rooms.transform.SetParent(GameObject.Find("Content").transform, false);
+        }
+    }
+
+    public void JoinToRoom(string roomName)
+    {
+        
+        PhotonNetwork.JoinRoom(roomName);
+    }
+    
+
+
+    public void RoomInfoMation()
+    {
+        Debug.Log("name: " + PhotonNetwork.room.Name);
+        Debug.Log("PlayerCount: " + PhotonNetwork.room.PlayerCount);
+        Debug.Log("IsOpen: " + PhotonNetwork.room.IsOpen);
+        Debug.Log("IsVisible: " + PhotonNetwork.room.IsVisible);
+        Debug.Log("MaxPlayers: " + PhotonNetwork.room.MaxPlayers);
+        
+    }
 }

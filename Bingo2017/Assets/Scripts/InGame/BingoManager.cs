@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+public class PlayerInfo
+{
+	public int OwnBingo;
+	public int OtherBingo;
+	public int[] BingoSize = new int[25];
+}
 
 [System.Serializable] //<== MonoBehaviour가 아닌 클래스에 대해 Inspector에 나타납니다.  
 public class Testitem  
@@ -17,6 +23,8 @@ public class BingoManager : MonoBehaviour {
 	//public Button[,] ButtonArray = new Button[PANELSIZE, PANELSIZE];
 	//public Button[] ButtonArray2 = new Button[PANELSIZE];
 
+	public PlayerInfo aa;
+
 	public Testitem[] arr = new Testitem[PANELSIZE];
 	public Text bb;
 	int bbcount;
@@ -28,9 +36,24 @@ public class BingoManager : MonoBehaviour {
 	int[] ColumnBingo = new int[PANELSIZE];
 	bool[] BingoCheck = new bool[12];
 	int blockCount;
+
+
+	private PhotonView pv;
+	public Text chatMsg;
+
+	void Awake()
+	{
+		Debug.Log("포톤뷰 생성");
+		pv = GetComponent<PhotonView>();
+	}
+
 	
 	void Start()
 	{
+		
+		string msg = "\nI'm Back!";
+		pv.RPC("LogMsg", PhotonTargets.Others, msg);
+
 		arr[0].ButtonArray = new Button[PANELSIZE];
 		arr[1].ButtonArray = new Button[PANELSIZE];
 		arr[2].ButtonArray = new Button[PANELSIZE];
@@ -55,6 +78,12 @@ public class BingoManager : MonoBehaviour {
 		}
 		Debug.Log(NumberList.Count);
 		
+	}
+
+	[PunRPC]
+	void LogMsg(string msg)
+	{
+		chatMsg.text = chatMsg.text + msg;
 	}
 
 	public void check()
