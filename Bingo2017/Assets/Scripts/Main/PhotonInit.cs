@@ -114,6 +114,10 @@ public class PhotonInit : MonoBehaviour
     {
         Debug.Log("RoomUpdate");
         Debug.Log(PhotonNetwork.GetRoomList().Length);
+        foreach (GameObject item in GameObject.FindGameObjectsWithTag("Room"))
+        {
+            Destroy(item);
+        }
     }
 
     public void RoomDisplay()
