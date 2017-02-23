@@ -34,12 +34,18 @@ public class BingoManager : MonoBehaviour {
 
 	public Button click;
 	public Text MyBingo;
+	private PhotonView Trade;
+
+	void Awake()
+	{
+		Trade = GetComponent<PhotonView>();
+	}
 
 	void Start()
 	{
 		int number = 1;
-		click.onClick.AddListener(() => FindNumber(number++));
-
+		click.onClick.AddListener(() => TempFunc(number++));
+		
 		blockRow[0].blockColumn = new GameObject[PANELSIZE];
 		blockRow[1].blockColumn = new GameObject[PANELSIZE];
 		blockRow[2].blockColumn = new GameObject[PANELSIZE];
@@ -68,8 +74,13 @@ public class BingoManager : MonoBehaviour {
 		}
 	}
 
-
-	void FindNumber(int blockNum)
+	public void TempFunc(int num)
+	{
+		Trade.RPC("FindNumber", PhotonTargets.Others, num);
+	}
+	
+	[PunRPC]
+	public void FindNumber(int blockNum)
 	{
 		for (int i = 0; i < PANELSIZE; i++)
 		{
@@ -87,6 +98,7 @@ public class BingoManager : MonoBehaviour {
 		}
 	}
 
+	
 	public void BingoLogic()
 	{
 		InitLogic();
@@ -140,6 +152,7 @@ public class BingoManager : MonoBehaviour {
 		CountBingo();
 	}
 
+	//빙고로직 검사할때 쓰이는 것들 초기화
 	void InitLogic()
 	{
 		Array.Clear(BingoCheck, 0, BingoCheck.Length);

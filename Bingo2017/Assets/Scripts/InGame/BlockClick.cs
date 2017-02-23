@@ -25,10 +25,13 @@ public class BlockClick : MonoBehaviour {
 			IsClick = true;
 			this.gameObject.GetComponent<Image>().sprite = ChageSprite;
 			this.transform.FindChild("Text").gameObject.SetActive(false);
+			int ClickNumber;
+			int.TryParse(this.transform.FindChild("Text").GetComponent<Text>().text, out ClickNumber);
+			BManager.GetComponent<BingoManager>().TempFunc(ClickNumber);
 			BManager.GetComponent<BingoManager>().BingoLogic();
 		}
 	}
-
+	
 	public bool getClick()
 	{
 		return IsClick;
