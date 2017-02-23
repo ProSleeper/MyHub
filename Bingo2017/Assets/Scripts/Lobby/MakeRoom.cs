@@ -14,7 +14,6 @@ public class MakeRoom : MonoBehaviour {
 	{
 		Button btn = this.GetComponent<Button>();
 		btn.onClick.AddListener(RoomMake);
-		PhotonInit.Instance.RoomDisplay();
 	}
 
 	void Update()

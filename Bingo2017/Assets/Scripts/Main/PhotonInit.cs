@@ -85,14 +85,6 @@ public class PhotonInit : MonoBehaviour
         SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void OnClickStartBtn()
-    {
-        //Debug.Log("name: " + PhotonNetwork.room.Name);
-        //Debug.Log("playerCount: " + PhotonNetwork.room.PlayerCount);
-        Debug.Log("Lobby-count: " + PhotonNetwork.countOfPlayers);
-        //Debug.Log("roomCount-Length: " + PhotonNetwork.GetRoomList().Length);
-    }
-
     public void OnCreateRoom(string RoomName)
     {
         
@@ -114,14 +106,18 @@ public class PhotonInit : MonoBehaviour
     {
         Debug.Log("RoomUpdate");
         Debug.Log(PhotonNetwork.GetRoomList().Length);
-        foreach (GameObject item in GameObject.FindGameObjectsWithTag("Room"))
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            Destroy(item);
+            RoomDisplay();
         }
     }
 
     public void RoomDisplay()
     {
+        foreach (GameObject item in GameObject.FindGameObjectsWithTag("Room"))
+        {
+            Destroy(item);
+        }
         foreach (RoomInfo room in PhotonNetwork.GetRoomList())
         {
             Debug.Log(room.Name);
@@ -137,17 +133,5 @@ public class PhotonInit : MonoBehaviour
     {
         
         PhotonNetwork.JoinRoom(roomName);
-    }
-    
-
-
-    public void RoomInfoMation()
-    {
-        Debug.Log("name: " + PhotonNetwork.room.Name);
-        Debug.Log("PlayerCount: " + PhotonNetwork.room.PlayerCount);
-        Debug.Log("IsOpen: " + PhotonNetwork.room.IsOpen);
-        Debug.Log("IsVisible: " + PhotonNetwork.room.IsVisible);
-        Debug.Log("MaxPlayers: " + PhotonNetwork.room.MaxPlayers);
-        
     }
 }
