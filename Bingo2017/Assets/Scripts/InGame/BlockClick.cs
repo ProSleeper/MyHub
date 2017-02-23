@@ -7,34 +7,30 @@ public class BlockClick : MonoBehaviour {
 
 	//public Button ChangeBlock;
 	public Sprite ChageSprite;
-	public bool Click;
+	public bool IsClick;
 	GameObject BManager;
 
 
 	// Use this for initialization
 	void Start () {
-		Click = false;
-		this.gameObject.GetComponent<Button>().onClick.AddListener(OneClick);
+		IsClick = false;
+		this.gameObject.GetComponent<Button>().onClick.AddListener(ClickBlock);
 		BManager = GameObject.Find("BingoManager");
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
-	void OneClick()
+	public void ClickBlock()
 	{
-		//Debug.Log("DoubleClick");
-		Click = true;
-		this.gameObject.GetComponent<Image>().sprite = ChageSprite;
-		this.transform.FindChild("Text").gameObject.SetActive(false);
-		BManager.GetComponent<BingoManager>().check();
+		if (!IsClick)
+		{
+			IsClick = true;
+			this.gameObject.GetComponent<Image>().sprite = ChageSprite;
+			this.transform.FindChild("Text").gameObject.SetActive(false);
+			BManager.GetComponent<BingoManager>().BingoLogic();
+		}
 	}
 
-	public bool IsClick()
+	public bool getClick()
 	{
-		return Click;
+		return IsClick;
 	}
 }

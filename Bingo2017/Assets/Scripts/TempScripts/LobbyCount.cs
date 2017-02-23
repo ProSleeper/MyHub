@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class LobbyCount : MonoBehaviour {
 
-
-
 	void Start()
 	{
 		

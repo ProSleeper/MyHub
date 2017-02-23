@@ -126,7 +126,6 @@ public class PhotonInit : MonoBehaviour
         {
             Debug.Log(room.Name);
             GameObject Rooms = Instantiate(roomObject);
-
             Roomintfo roomdata = Rooms.GetComponent<Roomintfo>();
             roomdata.roomName = room.Name;
             roomdata.WriteRoomName();
