@@ -3,37 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChatManager : MonoBehaviour {
+public class ChatManager : MonoBehaviour
+{
 
-	private PhotonView server;
-	public Text chatWindow;
-	public InputField chatInput;
-	public Button Send;
+    private PhotonView chatServer;
+    public Text chatWindow;
+    public InputField chatInput;
+    public Button send;
 
+    void Awake()
+    {
+        chatServer = GetComponent<PhotonView>();
+    }
 
-	void Awake()
+    // Use this for initialization
+    void Start()
+    {
+        send.onClick.AddListener(SendChatMessage);
+    }
+
+    void SendChatMessage()
+    {
+        string msg = "\n" + chatInput.text;
+        if (chatInput.text != "")
+        {
+            chatServer.RPC("LogMsg", PhotonTargets.All, msg);
+            chatInput.text = "";
+        }
+    }
+
+	public void JoinOther()
 	{
-		server = GetComponent<PhotonView>();
+        SendSystemMessage("\n상대방이 들어왔습니다.");
 	}
 
-	// Use this for initialization
-	void Start () {
-		Send.onClick.AddListener(SendChatMessage);
-	}
-	
-	void SendChatMessage()
+	public void LeaveOther()
 	{
-		string msg = "\n" + chatInput.text;
-		if (chatInput.text != "")
-		{
-			server.RPC("LogMsg", PhotonTargets.All, msg);
-			chatInput.text = "";
-		}
+        SendSystemMessage("\n상대방이 나갔습니다.");
 	}
-	
-	[PunRPC]
-	void LogMsg(string msg)
+
+	public void SendSystemMessage(string message)
 	{
-		chatWindow.text = chatWindow.text + msg;
+		chatServer.RPC("LogMsg", PhotonTargets.Others, message);
+	}
+
+    [PunRPC]
+    void LogMsg(string msg)
+    {
+        chatWindow.text = chatWindow.text + msg;
 	}
 }

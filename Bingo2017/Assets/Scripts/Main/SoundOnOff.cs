@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundOnOff : MonoBehaviour {
+public class SoundOnOff : MonoBehaviour
+{
 
-	// Use this for initialization
-	public static SoundOnOff Instance;
-	void Awake()
-	{
-		this.InstantiateController();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Use this for initialization
+    public static SoundOnOff Instance;
+    void Awake()
+    {
+        this.InstantiateController();
+    }
 
-	private void InstantiateController() {
-        if(Instance == null)
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    private void InstantiateController()
+    {
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(this);
         }
-        else if(this != Instance) {
+        else if (this != Instance)
+        {
             Destroy(this.gameObject);
         }
     }

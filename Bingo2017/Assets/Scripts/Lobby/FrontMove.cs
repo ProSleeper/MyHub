@@ -4,18 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class FrontMove : MonoBehaviour {
+public class FrontMove : MonoBehaviour
+{
 
 
 
-	void Start()
-	{
-		this.gameObject.GetComponent<Button>().onClick.AddListener(SceneChange);
-		//Debug.Log("now" + SceneManager.GetActiveScene().buildIndex);
-	}
+    void Start()
+    {
+        this.gameObject.GetComponent<Button>().onClick.AddListener(SceneChange);
+        //Debug.Log("now" + SceneManager.GetActiveScene().buildIndex);
+    }
 
-	void SceneChange()
-	{
-		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
-	}
+    void SceneChange()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

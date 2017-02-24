@@ -4,16 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LobbyToMain : MonoBehaviour {
+public class LobbyToMain : MonoBehaviour
+{
 
-	void Start()
-	{
-		this.gameObject.GetComponent<Button>().onClick.AddListener(SceneChange);
-		//Debug.Log("now" + SceneManager.GetActiveScene().buildIndex);
-	}
+    void Start()
+    {
+        this.gameObject.GetComponent<Button>().onClick.AddListener(SceneChange);
+    }
 
-	void SceneChange()
-	{
-		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex - 1);
-	}
+    void SceneChange()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
 }

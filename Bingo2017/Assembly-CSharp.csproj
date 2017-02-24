@@ -88,7 +88,6 @@
      <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\MonoPInvokeCallbackAttribute.cs" />
      <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\RewardBasedVideoAdClient.cs" />
      <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\Utils.cs" />
-     <Compile Include="Assets\LobbyManager.cs" />
      <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
      <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\JumpAndRunMovement.cs" />
      <Compile Include="Assets\Photon Unity Networking\Demos\DemoBoxes\ColorPerPlayer.cs" />
@@ -242,9 +241,9 @@
      <Compile Include="Assets\Scripts\InGame\ChatManager.cs" />
      <Compile Include="Assets\Scripts\InGame\DataTrade.cs" />
      <Compile Include="Assets\Scripts\InGame\InGameToLobby.cs" />
-     <Compile Include="Assets\Scripts\InGame\SwapImage.cs" />
      <Compile Include="Assets\Scripts\Lobby\FrontMove.cs" />
      <Compile Include="Assets\Scripts\Lobby\JoinRoom.cs" />
+     <Compile Include="Assets\Scripts\Lobby\LobbyManager.cs" />
      <Compile Include="Assets\Scripts\Lobby\LobbyToMain.cs" />
      <Compile Include="Assets\Scripts\Lobby\MakeRoom.cs" />
      <Compile Include="Assets\Scripts\Main\AddMob.cs" />
@@ -252,9 +251,8 @@
      <Compile Include="Assets\Scripts\Main\PhotonInit.cs" />
      <Compile Include="Assets\Scripts\Main\SceneMove.cs" />
      <Compile Include="Assets\Scripts\Main\SoundOnOff.cs" />
+     <Compile Include="Assets\Scripts\Main\SwapSoundButton.cs" />
      <Compile Include="Assets\Scripts\TempScripts\LobbyCount.cs" />
-     <Compile Include="Assets\Scripts\TempScripts\Roomintfo.cs" />
-     <Compile Include="Assets\Scripts\TempScripts\TempPlayer.cs" />
      <None Include="Assets\Photon Unity Networking\Demos\MarcoPolo-Tutorial\marcopolo-readme.txt" />
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
@@ -284,10 +282,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
- <HintPath>C:/Users/wyk/Documents/GitHub/MyHub/Bingo2017/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ <HintPath>C:/Users/KITRIGAME/Documents/GitHub/MyHub/Bingo2017/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/wyk/Documents/GitHub/MyHub/Bingo2017/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/KITRIGAME/Documents/GitHub/MyHub/Bingo2017/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

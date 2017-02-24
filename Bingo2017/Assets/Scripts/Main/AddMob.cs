@@ -9,12 +9,12 @@ public class AddMob : MonoBehaviour
     private BannerView adBannerView = null;
     public static AddMob Instance;
 
-    void Awake() 
+    void Awake()
     {
         this.InstantiateController();
     }
 
-    void Start ()
+    void Start()
     {
         if (adBannerView == null)
         {
@@ -25,22 +25,24 @@ public class AddMob : MonoBehaviour
             adBannerView.LoadAd(adRequest);//해당 함수로 광고 요청 반복 가능.
         }
     }
- 
-    private void InstantiateController() {
-        if(Instance == null)
+
+    private void InstantiateController()
+    {
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(this);
         }
-        else if(this != Instance) {
+        else if (this != Instance)
+        {
             Destroy(this.gameObject);
         }
     }
-    
+
     public void AddShow()       // 버튼이라던가 이벤트로 보여주는건데.. 없어도 배너광고 잘 나옴
     {
         adBannerView.Show();
     }
-        
+
 
 }

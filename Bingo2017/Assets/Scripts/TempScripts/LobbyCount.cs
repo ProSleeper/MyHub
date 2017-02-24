@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class LobbyCount : MonoBehaviour {
 
-	void Start()
-	{
+	// Use this for initialization
+	void Start () {
 		
 	}
-
+	
 	// Update is called once per frame
 	void Update () {
 		this.gameObject.GetComponent<Text>().text ="Lobby User Count: " + PhotonNetwork.countOfPlayers.ToString();
