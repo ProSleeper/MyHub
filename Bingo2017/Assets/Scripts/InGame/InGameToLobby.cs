@@ -8,19 +8,19 @@ public class InGameToLobby : MonoBehaviour
 {
 
     
-    AsyncOperation async; 
+    //AsyncOperation async; 
     void Start()
     {
-        async = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1); 
-        async.allowSceneActivation = false;
+        //async = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1); 
+        //async.allowSceneActivation = false;
         this.gameObject.GetComponent<Button>().onClick.AddListener(RoomOut);
         //Debug.Log("now" + SceneManager.GetActiveScene().buildIndex);
     }
 
     void RoomOut()
     {
-		//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        async.allowSceneActivation = true;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        //async.allowSceneActivation = true;
         PhotonInit.Instance.LeaveRoom();
     }
 }

@@ -45,11 +45,22 @@ public class BingoManager : MonoBehaviour
         blockRow[3].blockColumn = new GameObject[PANELSIZE];
         blockRow[4].blockColumn = new GameObject[PANELSIZE];
 
+        InitGame();
+    }
+
+    public void InitGame()
+    {
+        InitBingoPanel();
+        InitLogic();
+        CountBingo();
+    }
+
+    void InitBingoPanel()
+    {
         for (int i = 0; i < 25; i++)
         {
             NumberList.Add(i + 1);
         }
-
         //현재 있는 블럭에 1~25까지 랜덤하게 번호 부여
         int blockCount = 0;
         int RandomNumber;
@@ -60,6 +71,7 @@ public class BingoManager : MonoBehaviour
             {
                 RandomNumber = UnityEngine.Random.Range(0, NumberList.Count);
                 blockRow[i].blockColumn[j] = GameObject.Find("Block" + blockCount.ToString());  //찾은 block 오브젝트 담아둠
+                blockRow[i].blockColumn[j].GetComponent<BlockClick>().InitBlock();
                 blockRow[i].blockColumn[j].transform.FindChild("Text").GetComponent<Text>().text = NumberList[RandomNumber].ToString();
                 NumberList.RemoveAt(RandomNumber);
                 blockCount++;
@@ -67,7 +79,7 @@ public class BingoManager : MonoBehaviour
         }
     }
 
-    public void TempFunc(int ClickNumber)
+    public void SendNumber(int ClickNumber)
     {
 		PlayerData[0] = ClickNumber;
         Trade.RPC("FindNumber", PhotonTargets.Others, PlayerData);

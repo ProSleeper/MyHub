@@ -7,20 +7,19 @@ using UnityEngine.SceneManagement;
 public class GameStart : MonoBehaviour
 {
 
-    AsyncOperation async; 
+    //AsyncOperation async; 
 
     void Start()
     {
-        async = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1); 
-        async.allowSceneActivation = false;
+        //async = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1); 
+        //async.allowSceneActivation = false;
         this.gameObject.GetComponent<Button>().onClick.AddListener(SceneChange);
         //Debug.Log("now" + SceneManager.GetActiveScene().buildIndex);
     }
 
     void SceneChange()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        async.allowSceneActivation = true;
-        PhotonInit.Instance.RoomDisplay();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //async.allowSceneActivation = true;
     }
 }

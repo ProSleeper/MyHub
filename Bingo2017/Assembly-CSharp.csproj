@@ -236,11 +236,13 @@
      <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
      <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
      <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
+     <Compile Include="Assets\Scripts\InGame\BackButton.cs" />
      <Compile Include="Assets\Scripts\InGame\BingoManager.cs" />
      <Compile Include="Assets\Scripts\InGame\BlockClick.cs" />
      <Compile Include="Assets\Scripts\InGame\ChatManager.cs" />
-     <Compile Include="Assets\Scripts\InGame\DataTrade.cs" />
      <Compile Include="Assets\Scripts\InGame\InGameToLobby.cs" />
+     <Compile Include="Assets\Scripts\InGame\ReStart.cs" />
+     <Compile Include="Assets\Scripts\InGame\WaitingGame.cs" />
      <Compile Include="Assets\Scripts\Lobby\JoinRoom.cs" />
      <Compile Include="Assets\Scripts\Lobby\LobbyManager.cs" />
      <Compile Include="Assets\Scripts\Lobby\LobbyToMain.cs" />

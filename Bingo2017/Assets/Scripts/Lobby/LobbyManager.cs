@@ -6,18 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour
 {
-    AsyncOperation async; 
+    //AsyncOperation async; 
 
     void Start()
     {
-        async = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1); 
-        async.allowSceneActivation = false;
+        //async = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1); 
+        //async.allowSceneActivation = false;
+        
         PhotonInit.Instance.RoomDisplay();
     }
 
     // Update is called once per frame
     public void SceneChange()
     {
-        async.allowSceneActivation = true;
+        //async.allowSceneActivation = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
