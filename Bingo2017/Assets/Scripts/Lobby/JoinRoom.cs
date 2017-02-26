@@ -10,10 +10,13 @@ public class JoinRoom : MonoBehaviour
     string RoomName;
 
     public Text ViewName;
+    //AsyncOperation async; 
 
     // Use this for initialization
     void Start()
     {
+        //async = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1); 
+        //async.allowSceneActivation = false;
         Button btn = this.gameObject.GetComponent<Button>();
         btn.onClick.AddListener(joinroom);
     }
@@ -22,6 +25,7 @@ public class JoinRoom : MonoBehaviour
     {
 		PhotonNetwork.JoinRoom(RoomName);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //async.allowSceneActivation = true;
     }
 
     public void NameSetting(string setName)
