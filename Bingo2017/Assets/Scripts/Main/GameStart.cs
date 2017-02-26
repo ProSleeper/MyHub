@@ -21,5 +21,6 @@ public class GameStart : MonoBehaviour
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         async.allowSceneActivation = true;
+        PhotonInit.Instance.RoomDisplay();
     }
 }
