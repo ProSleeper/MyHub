@@ -33,16 +33,6 @@ public class PhotonInit : MonoBehaviour
     }
     //여기까지 싱글톤 코드
 
-    void OnPhotonPlayerConnected()
-    {
-        Debug.Log("플레이어 입장");
-    }
-
-    void OnPhotonPlayerDisconnected()
-    {
-        Debug.Log("플레이어 나감(로비&실행종료)");
-    }
-    
     //여기부터 네트워크 상황에 맞춰서 실행하는 함수
 
     //로비 입장시 실행 함수
@@ -53,11 +43,23 @@ public class PhotonInit : MonoBehaviour
     }
 
     //룸 입장시 실행 함순
-    void OnJoinedRoom()
-    {
-        Debug.Log("Join Room");
-        //GameObject.Find("ChatManager").GetComponent<ChatManager>().SendSystemMessage("\n상대방이 들어왔습니다.");
-    }
+    // void OnJoinedRoom()
+    // {
+    //     Debug.Log("Join Room");
+    //     Debug.Log(PhotonNetwork.room.PlayerCount);
+
+    //     if (PhotonNetwork.room.PlayerCount == 1)        //방을 생성함
+    //     {
+            
+    //     }
+    //     else if (PhotonNetwork.room.PlayerCount == 2)   //방에 입장함
+    //     {
+            
+    //     }
+    //     //Debug.Log(PhotonNetwork.player.UserId);
+    //     //Debug.Log(PhotonNetwork.inRoom);
+    //     //GameObject.Find("ChatManager").GetComponent<ChatManager>().SendSystemMessage("\n상대방이 들어왔습니다.");
+    // }
 
     public void LeaveRoom()
     {
@@ -77,6 +79,7 @@ public class PhotonInit : MonoBehaviour
             roomOption.IsVisible = true;
             roomOption.MaxPlayers = 2;
             PhotonNetwork.CreateRoom(RoomName, roomOption, TypedLobby.Default);
+            Debug.Log(PhotonNetwork.inRoom);
         }
     }
 

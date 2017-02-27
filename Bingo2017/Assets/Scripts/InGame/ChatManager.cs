@@ -20,6 +20,7 @@ public class ChatManager : MonoBehaviour
     void Start()
     {
         send.onClick.AddListener(SendChatMessage);
+        //Debug.Log(PhotonNetwork.isMasterClient);
     }
 
     void SendChatMessage()

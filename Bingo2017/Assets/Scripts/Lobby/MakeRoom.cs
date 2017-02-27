@@ -45,6 +45,5 @@ public class MakeRoom : MonoBehaviour
             PhotonInit.Instance.OnCreateRoom(MyText.text);
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-
     }
 }

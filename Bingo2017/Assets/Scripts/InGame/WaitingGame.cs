@@ -1,12 +1,13 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class WaitingGame : MonoBehaviour
 {
-	public Text WaitText;
-	public Text PlayText;
+	Text WaitText;
+	string InitText;
 
 	float DotTime = 1.0f;
 	char dot = '.';
@@ -14,45 +15,24 @@ public class WaitingGame : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		WaitText.text = "Waiting for other\n";
-        StartCoroutine(WaitRutine());
-		PlayGame();
+		WaitText = this.GetComponent<Text>();
+        StartCoroutine(WaitRutine(WaitText));
     }
 
     // Update is called once per frame
-    IEnumerator WaitRutine()
+    IEnumerator WaitRutine(Text text)
     {
-		Debug.Log("char");
+		InitText = text.text;
+		int count = 0;
 		while(true)
 		{
-			WaitText.text += dot;
+			text.text += dot;
+			count++;
 			yield return new WaitForSeconds(DotTime);
-            if (WaitText.text == "Waiting for other\n......")
+            if ((count % 5) == 0)
             {
-                WaitText.text = "Waiting for other\n";
+                text.text = InitText;
             }
         }
     }
-
-	void PlayGame()
-	{
-		StopCoroutine(WaitRutine());
-		WaitText.text = "Other Player\nConnected!";
-		StartCoroutine(StartRutine());
-	}
-
-
-	IEnumerator StartRutine()
-	{
-		Debug.Log("char");
-		int i = 0;
-		while(i < 5)
-		{
-			PlayText.text = (5 - i).ToString();
-			i++;
-			yield return new WaitForSeconds(DotTime);
-        }
-		this.gameObject.SetActive(false);
-	}
-
 }

@@ -12,7 +12,6 @@ public class BlockClick : MonoBehaviour
     public bool IsClick;
     GameObject BManager;
 
-
     // Use this for initialization
     void Start()
     {

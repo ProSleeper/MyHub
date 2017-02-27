@@ -18,6 +18,7 @@ public class JoinRoom : MonoBehaviour
         LManager = GameObject.Find("LobbyManager");
         Button btn = this.gameObject.GetComponent<Button>();
         btn.onClick.AddListener(joinroom);
+        
     }
 
     void joinroom()
