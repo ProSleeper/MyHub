@@ -88,7 +88,7 @@ public class BingoManager : MonoBehaviour
     [PunRPC]
     public void FindNumber(int[] blockNum)
     {
-		//상대방이 클릭한 빙고를 받아서 클릭해줌
+        //상대방이 클릭한 빙고를 받아서 클릭해줌
         for (int i = 0; i < PANELSIZE; i++)
         {
             for (int j = 0; j < PANELSIZE; j++)
@@ -103,7 +103,11 @@ public class BingoManager : MonoBehaviour
                 }
             }
         }
-	 	OtherBingo.text = "Other\nBingo\n\n" + blockNum[1].ToString();
+        OtherBingo.text = "Other\nBingo\n\n" + blockNum[1].ToString();
+        if (blockNum[1] >= 5)
+        {
+            GameManager.Instance.GameLose();
+        }
     }
 
 
@@ -190,5 +194,10 @@ public class BingoManager : MonoBehaviour
         }
         MyBingo.text = "My\nBingo\n\n" + BingoCount.ToString();
 		PlayerData[1] = BingoCount;
+
+        if (BingoCount >= 5)
+        {
+            GameManager.Instance.GameWin();
+        }
     }
 }

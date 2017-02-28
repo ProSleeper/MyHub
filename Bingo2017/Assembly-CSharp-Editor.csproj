@@ -48,7 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\GoogleMobileAds\Editor\CocoaPodHelper.cs" />
      <Compile Include="Assets\GoogleMobileAds\Editor\PostProcessor.cs" />
-     <Compile Include="Assets\Photon Unity Networking\Demos\DemoHub\Editor\PunStartup.cs" />
      <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\AccountService.cs" />
      <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\CullAreaEditor.cs" />
      <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\PhotonConverter.cs" />
@@ -74,16 +73,11 @@
      <Compile Include="Assets\PlayServicesResolver\Editor\ResolverVer1_2.cs" />
      <Compile Include="Assets\PlayServicesResolver\Editor\SampleDependencies.cs" />
      <Compile Include="Assets\PlayServicesResolver\Editor\SettingsDialog.cs" />
-     <None Include="Assets\Photon Unity Networking\Demos\MarcoPolo-Tutorial\marcopolo-readme.txt" />
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
      <None Include="Assets\Plugins\release_history.txt" />
-     <None Include="Assets\Photon Unity Networking\Demos\DemoBoxes\Resources\eurof_tt.txt" />
      <None Include="Assets\Plugins\Android\GoogleMobileAdsPlugin\AndroidManifest.xml" />
-     <None Include="Assets\Photon Unity Networking\Demos\DemoPickup\Assets\3dFont\3dText.shader" />
      <None Include="Assets\Photon Unity Networking\readme.txt" />
-     <None Include="Assets\Photon Unity Networking\Demos\DemoRockPaperScissors\Assets\OpenSans\Apache License.txt" />
-     <None Include="Assets\Photon Unity Networking\changelog.txt" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -133,16 +127,16 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/wyk/Documents/GitHub/MyHub/Bingo2017/Assets/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/KITRIGAME/Documents/GitHub/MyHub/Bingo2017/Assets/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="JarResolverLib">
- <HintPath>C:/Users/wyk/Documents/GitHub/MyHub/Bingo2017/Assets/PlayServicesResolver/Editor/JarResolverLib.dll</HintPath>
+ <HintPath>C:/Users/KITRIGAME/Documents/GitHub/MyHub/Bingo2017/Assets/PlayServicesResolver/Editor/JarResolverLib.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
- <HintPath>C:/Users/wyk/Documents/GitHub/MyHub/Bingo2017/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ <HintPath>C:/Users/KITRIGAME/Documents/GitHub/MyHub/Bingo2017/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/wyk/Documents/GitHub/MyHub/Bingo2017/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/KITRIGAME/Documents/GitHub/MyHub/Bingo2017/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>

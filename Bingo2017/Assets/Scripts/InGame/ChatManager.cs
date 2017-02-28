@@ -33,19 +33,21 @@ public class ChatManager : MonoBehaviour
         }
     }
 
-	public void JoinOther()
-	{
-        SendSystemMessage("\n상대방이 들어왔습니다.");
-	}
+    
 
-	public void LeaveOther()
-	{
-        SendSystemMessage("\n상대방이 나갔습니다.");
-	}
+	// public void JoinOther()
+	// {
+    //     SendSystemMessage("\n상대방이 들어왔습니다.");
+	// }
+
+	// public void LeaveOther()
+	// {
+    //     SendSystemMessage("\n상대방이 나갔습니다.");
+	// }
 
 	public void SendSystemMessage(string message)
 	{
-		chatServer.RPC("LogMsg", PhotonTargets.Others, message);
+		chatServer.RPC("LogMsg", PhotonTargets.All, message);
 	}
 
     [PunRPC]

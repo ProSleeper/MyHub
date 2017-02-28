@@ -42,6 +42,12 @@ public class PhotonInit : MonoBehaviour
         //PhotonNetwork.CreateRoom("MyMatch");
     }
 
+    // void OnLeftRoom ()
+	// {
+    //     //본인 클라이언트가 나갔을 때 실행됨
+	// 	Debug.Log("left");
+	// }
+
     //룸 입장시 실행 함순
     // void OnJoinedRoom()
     // {
@@ -79,7 +85,6 @@ public class PhotonInit : MonoBehaviour
             roomOption.IsVisible = true;
             roomOption.MaxPlayers = 2;
             PhotonNetwork.CreateRoom(RoomName, roomOption, TypedLobby.Default);
-            Debug.Log(PhotonNetwork.inRoom);
         }
     }
 
@@ -87,7 +92,10 @@ public class PhotonInit : MonoBehaviour
     void OnReceivedRoomListUpdate()
     {
         Debug.Log("RoomUpdate");
-        Debug.Log(PhotonNetwork.GetRoomList().Length);
+        Debug.Log("RoomCount: " + PhotonNetwork.GetRoomList().Length);
+        Debug.Log("PlayerCount: " + PhotonNetwork.countOfPlayers);
+
+        
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             RoomDisplay();

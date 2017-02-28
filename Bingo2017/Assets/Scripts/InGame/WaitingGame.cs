@@ -12,11 +12,16 @@ public class WaitingGame : MonoBehaviour
 	float DotTime = 1.0f;
 	char dot = '.';
 
-    // Use this for initialization
-    void Start()
+    void OnEnable()
     {
-		WaitText = this.GetComponent<Text>();
+        WaitText = this.GetComponent<Text>();
+        WaitText.text = "Other Player\nWaiting";
         StartCoroutine(WaitRutine(WaitText));
+    }
+
+    void OnDisable()
+    {
+        StopCoroutine(WaitRutine(WaitText));
     }
 
     // Update is called once per frame
