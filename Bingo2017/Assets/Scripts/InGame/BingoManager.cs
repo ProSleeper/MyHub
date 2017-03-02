@@ -132,6 +132,7 @@ public class BingoManager : MonoBehaviour
                     {
                         BingoCheck[i] = true;
                     }
+                    
                 }
 
                 //열 빙고 판별
@@ -199,13 +200,11 @@ public class BingoManager : MonoBehaviour
         }
         MyBingo.text = BingoCount.ToString();
 		PlayerData[1] = BingoCount;
-
+        
         //이 부분에서 무언가 순서가 문제인듯...
         if (BingoCount >= 5)
         {
             GameManager.Instance.GameWin();
-            return;
         }
-        Trade.RPC("FindNumber", PhotonTargets.Others, PlayerData);
     }
 }

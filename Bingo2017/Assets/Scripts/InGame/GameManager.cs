@@ -77,8 +77,18 @@ public class GameManager : MonoBehaviour
 
     public void SendTurn()
     {
-        GameMessage.RPC("MyTurn", PhotonTargets.Others);
-		OtherTurn();
+        
+        if (!isGameOver)
+        {
+            Debug.Log("게임종료 아니고 턴넘김");
+            GameMessage.RPC("MyTurn", PhotonTargets.Others);
+		    OtherTurn();
+        }
+        else
+        {
+            Debug.Log("게임종료 일때 턴넘김");
+        }
+        
     }
 
     [PunRPC]
@@ -86,25 +96,36 @@ public class GameManager : MonoBehaviour
     {
         if (!isGameOver)
         {
-            Debug.Log("mymy");
+            Debug.Log("게임종료 아니고 나의턴");
             isMyTurn = true;
             InitPlay();
 			Panel[0].SetActive(true);
             Panel[7].SetActive(true);
             Invoke("InitPlay", 1.0f);
         }
+        else
+        {
+            Debug.Log("게임종료 일때 나의턴");
+        }
+        
     }
 
     void OtherTurn()
     {
+       
         if (!isGameOver)
         {
-            Debug.Log("other");
+            Debug.Log("게임종료 아니고 상대턴");
             isMyTurn = false;
             InitPlay();
             Panel[0].SetActive(true);
             Panel[8].SetActive(true);
         }
+        else
+        {
+            Debug.Log("게임종료 일때 상대턴");
+        }
+         
     }
 
     void SetPlayGame()
@@ -117,7 +138,6 @@ public class GameManager : MonoBehaviour
 
     public void InitPlay()
     {
-        isGameOver = false;
         Panel[0].SetActive(false);
         Panel[1].SetActive(false);
         Panel[2].SetActive(false);
@@ -156,6 +176,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("PlayerJoin");
         InitPlay();
+        isGameOver = false;
         Panel[0].SetActive(true);
         Panel[2].SetActive(true);
         PhotonNetwork.room.IsVisible = false;
@@ -176,6 +197,7 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
+        Debug.Log("승리");
         isGameOver = true;
         InitPlay();
         Panel[0].SetActive(true);
@@ -186,6 +208,7 @@ public class GameManager : MonoBehaviour
 
     public void GameLose()
     {
+        Debug.Log("패배");
         isGameOver = true;
         InitPlay();
         Panel[0].SetActive(true);
@@ -206,6 +229,7 @@ public class GameManager : MonoBehaviour
     void JoinerWait()
     {
         InitPlay();
+        isGameOver = false;
         Panel[0].SetActive(true);
         Panel[1].SetActive(true);
         PhotonNetwork.room.IsVisible = true;
