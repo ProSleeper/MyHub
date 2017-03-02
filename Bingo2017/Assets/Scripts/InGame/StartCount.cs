@@ -23,7 +23,8 @@ public class StartCount : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         this.gameObject.SetActive(false);
-        GameManager.Instance.SetPlay();
         StopCoroutine(StartRutine());
+        GameManager.Instance.InitPlay();
+        GameManager.Instance.SetTurn();
     }
 }

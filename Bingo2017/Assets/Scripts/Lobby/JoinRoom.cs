@@ -24,6 +24,7 @@ public class JoinRoom : MonoBehaviour
     void joinroom()
     {
 		PhotonNetwork.JoinRoom(RoomName);
+        
         LManager.GetComponent<LobbyManager>().SceneChange();
 		//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

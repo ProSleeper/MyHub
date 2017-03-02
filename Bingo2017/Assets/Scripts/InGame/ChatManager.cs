@@ -33,8 +33,6 @@ public class ChatManager : MonoBehaviour
         }
     }
 
-    
-
 	// public void JoinOther()
 	// {
     //     SendSystemMessage("\n상대방이 들어왔습니다.");

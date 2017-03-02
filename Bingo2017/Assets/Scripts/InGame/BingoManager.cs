@@ -30,7 +30,7 @@ public class BingoManager : MonoBehaviour
 	int[] PlayerData = new int[2];
     public Text MyBingo;
 	public Text OtherBingo;
-    private PhotonView Trade;
+    PhotonView Trade;
 
     void Awake()
     {
@@ -45,7 +45,6 @@ public class BingoManager : MonoBehaviour
         blockRow[3].blockColumn = new GameObject[PANELSIZE];
         blockRow[4].blockColumn = new GameObject[PANELSIZE];
 
-        InitGame();
     }
 
     public void InitGame()
@@ -77,17 +76,27 @@ public class BingoManager : MonoBehaviour
                 blockCount++;
             }
         }
+        MyBingo.text = 0.ToString();
+        OtherBingo.text = 0.ToString();
     }
 
     public void SendNumber(int ClickNumber)
     {
 		PlayerData[0] = ClickNumber;
+        
         Trade.RPC("FindNumber", PhotonTargets.Others, PlayerData);
     }
 
     [PunRPC]
     public void FindNumber(int[] blockNum)
     {
+        OtherBingo.text = blockNum[1].ToString();
+        if (blockNum[1] >= 5)
+        {
+            GameManager.Instance.GameLose();
+            return;
+        }
+
         //상대방이 클릭한 빙고를 받아서 클릭해줌
         for (int i = 0; i < PANELSIZE; i++)
         {
@@ -98,16 +107,12 @@ public class BingoManager : MonoBehaviour
 
                 if (blockNum[0] == tempNum)
                 {
-                    blockRow[i].blockColumn[j].GetComponent<BlockClick>().ClickBlock();
+                    blockRow[i].blockColumn[j].GetComponent<BlockClick>().ClickOtherBlock();
                     Debug.Log(blockRow[i].blockColumn[j].name);
                 }
             }
         }
-        OtherBingo.text = "Other\nBingo\n\n" + blockNum[1].ToString();
-        if (blockNum[1] >= 5)
-        {
-            GameManager.Instance.GameLose();
-        }
+        
     }
 
 
@@ -192,12 +197,15 @@ public class BingoManager : MonoBehaviour
                 BingoCount++;
             }
         }
-        MyBingo.text = "My\nBingo\n\n" + BingoCount.ToString();
+        MyBingo.text = BingoCount.ToString();
 		PlayerData[1] = BingoCount;
 
+        //이 부분에서 무언가 순서가 문제인듯...
         if (BingoCount >= 5)
         {
             GameManager.Instance.GameWin();
+            return;
         }
+        Trade.RPC("FindNumber", PhotonTargets.Others, PlayerData);
     }
 }
