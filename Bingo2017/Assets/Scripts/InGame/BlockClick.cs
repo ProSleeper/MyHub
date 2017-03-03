@@ -58,6 +58,7 @@ public class BlockClick : MonoBehaviour
             int ClickNumber = 0;
             int.TryParse(this.transform.FindChild("Text").GetComponent<Text>().text, out ClickNumber);
 			BManager.GetComponent<BingoManager>().BingoLogic();                 //클릭시 빙고 검사 로직
+            BManager.GetComponent<BingoManager>().UpdateOther();
         }
     }
 

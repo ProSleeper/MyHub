@@ -80,6 +80,22 @@ public class BingoManager : MonoBehaviour
         OtherBingo.text = 0.ToString();
     }
 
+    public void UpdateOther()
+    {
+        Trade.RPC("UpdateOtherBingo", PhotonTargets.Others, PlayerData[1]);
+    }
+
+    [PunRPC]
+    public void UpdateOtherBingo(int otherBingo)
+    {
+        OtherBingo.text = otherBingo.ToString();
+        if (otherBingo >= 5)
+        {
+            GameManager.Instance.GameLose();
+            return;
+        }
+    }
+
     public void SendNumber(int ClickNumber)
     {
 		PlayerData[0] = ClickNumber;
@@ -112,7 +128,6 @@ public class BingoManager : MonoBehaviour
                 }
             }
         }
-        
     }
 
 
@@ -198,6 +213,7 @@ public class BingoManager : MonoBehaviour
                 BingoCount++;
             }
         }
+
         MyBingo.text = BingoCount.ToString();
 		PlayerData[1] = BingoCount;
         

@@ -10,6 +10,7 @@ public class ChatManager : MonoBehaviour
     public Text chatWindow;
     public InputField chatInput;
     public Button send;
+    public RectTransform content;
 
     void Awake()
     {
@@ -52,5 +53,6 @@ public class ChatManager : MonoBehaviour
     void LogMsg(string msg)
     {
         chatWindow.text = chatWindow.text + msg;
+        content.sizeDelta = new Vector2(content.sizeDelta.x, content.sizeDelta.y + 110.0f);
 	}
 }
