@@ -13,6 +13,7 @@ public class GameStart : MonoBehaviour
     {
         //async = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1); 
         //async.allowSceneActivation = false;
+        
         this.gameObject.GetComponent<Button>().onClick.AddListener(SceneChange);
         //Debug.Log("now" + SceneManager.GetActiveScene().buildIndex);
     }

@@ -12,6 +12,6 @@ public class LobbyCount : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.gameObject.GetComponent<Text>().text ="Lobby User Count: " + PhotonNetwork.countOfPlayers.ToString();
+		this.gameObject.GetComponent<Text>().text ="Player: " + PhotonNetwork.countOfPlayers.ToString();
 	}
 }
