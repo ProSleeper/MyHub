@@ -186,6 +186,8 @@
      <Compile Include="Assets\Scripts\Main\Portal.cs" />
      <Compile Include="Assets\Scripts\Main\SoundOnOff.cs" />
      <Compile Include="Assets\Scripts\Main\SwapSoundButton.cs" />
+     <Compile Include="Assets\Scripts\Main\UIManager.cs" />
+     <Compile Include="Assets\Scripts\TempScripts\AppReset.cs" />
      <Compile Include="Assets\Scripts\TempScripts\LobbyCount.cs" />
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
@@ -211,10 +213,13 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
- <HintPath>C:/Users/KITRIGAME/Documents/GitHub/MyHub/Bingo2017/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ <HintPath>C:/Users/wyk/Documents/GitHub/MyHub/Bingo2017/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/KITRIGAME/Documents/GitHub/MyHub/Bingo2017/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/wyk/Documents/GitHub/MyHub/Bingo2017/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Advertisements.Editor">
+ <HintPath>C:/Users/wyk/Documents/GitHub/MyHub/Bingo2017/Assets/UnityAds/UnityEngine.Advertisements.Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

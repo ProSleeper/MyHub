@@ -19,6 +19,7 @@ public class InGameToLobby : MonoBehaviour
 
     void RoomOut()
     {
+        SoundOnOff.Instance.EffectPlay(4, 7);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         //async.allowSceneActivation = true;
         PhotonInit.Instance.LeaveRoom();

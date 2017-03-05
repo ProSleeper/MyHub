@@ -124,7 +124,7 @@ public class BingoManager : MonoBehaviour
                 if (blockNum[0] == tempNum)
                 {
                     blockRow[i].blockColumn[j].GetComponent<BlockClick>().ClickOtherBlock();
-                    Debug.Log(blockRow[i].blockColumn[j].name);
+                    //Debug.Log(blockRow[i].blockColumn[j].name);
                 }
             }
         }

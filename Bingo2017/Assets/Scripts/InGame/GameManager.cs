@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     PhotonView GameMessage;
     GameObject BManager;
+    GameObject CManager;
     bool isMyTurn;
     bool isGameOver;
 
@@ -36,13 +37,13 @@ public class GameManager : MonoBehaviour
     {
         GameMessage = this.GetComponent<PhotonView>();
         BManager = GameObject.Find("BingoManager");
+        CManager = GameObject.Find("ChatManager");
 		isGameOver = false;
-		Debug.Log(GameMessage.viewID);
     }
 
     public void PlayGame()
     {
-        Debug.Log("play");
+        //Debug.Log("play");
         SetPlayGame();
         GameMessage.RPC("sendMessage", PhotonTargets.Others);
     }
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void OtherPlayGame()
     {
-        Debug.Log("get");
+        //Debug.Log("get");
         SetPlayGame();
     }
 
@@ -79,13 +80,13 @@ public class GameManager : MonoBehaviour
         
         if (!isGameOver)
         {
-            Debug.Log("게임종료 아니고 턴넘김");
+            //Debug.Log("게임종료 아니고 턴넘김");
             GameMessage.RPC("MyTurn", PhotonTargets.Others);
 		    OtherTurn();
         }
         else
         {
-            Debug.Log("게임종료 일때 턴넘김");
+            //Debug.Log("게임종료 일때 턴넘김");
         }
         
     }
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour
     {
         if (!isGameOver)
         {
-            Debug.Log("게임종료 아니고 나의턴");
+            //Debug.Log("게임종료 아니고 나의턴");
             isMyTurn = true;
             InitPlay();
 			Panel[0].SetActive(true);
@@ -104,7 +105,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("게임종료 일때 나의턴");
+            //Debug.Log("게임종료 일때 나의턴");
         }
         
     }
@@ -114,7 +115,7 @@ public class GameManager : MonoBehaviour
        
         if (!isGameOver)
         {
-            Debug.Log("게임종료 아니고 상대턴");
+            //Debug.Log("게임종료 아니고 상대턴");
             isMyTurn = false;
             InitPlay();
             Panel[0].SetActive(true);
@@ -122,7 +123,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("게임종료 일때 상대턴");
+            //Debug.Log("게임종료 일때 상대턴");
         }
          
     }
@@ -147,33 +148,34 @@ public class GameManager : MonoBehaviour
         Panel[7].SetActive(false);
         Panel[8].SetActive(false);
     }
-
+    
     void OnJoinedRoom()
     {
-        Debug.Log("Join Room");
+        //Debug.Log("Join Room");
         Panel[9].GetComponent<Text>().text = PhotonNetwork.room.Name;
-		PhotonNetwork.isMessageQueueRunning = true;
+        CManager.GetComponent<ChatManager>().LogMsg("RoomName: " + PhotonNetwork.room.Name);
 
         if (PhotonNetwork.room.PlayerCount == 1)        //방을 생성함
         {
-            Debug.Log("RoomMake");
+            //Debug.Log("RoomMake");
             Panel[1].SetActive(true);
             PhotonNetwork.playerName = "Maker";
         }
         else if (PhotonNetwork.room.PlayerCount == 2)   //방에 입장함
         {
-            Debug.Log("RoomJoin");
+            //Debug.Log("RoomJoin");
             Panel[1].SetActive(true);
             PhotonNetwork.playerName = "Joiner";
         }
 
-        Debug.Log(PhotonNetwork.playerName);
-        Debug.Log(PhotonNetwork.inRoom);
+        //Debug.Log(PhotonNetwork.playerName);
+        //Debug.Log(PhotonNetwork.inRoom);
     }
 
     void OnPhotonPlayerConnected()
     {
-        Debug.Log("PlayerJoin");
+        //Debug.Log("PlayerJoin");
+        CManager.GetComponent<ChatManager>().JoinOther();
         InitPlay();
         isGameOver = false;
         Panel[0].SetActive(true);
@@ -185,7 +187,8 @@ public class GameManager : MonoBehaviour
 
     void OnPhotonPlayerDisconnected()
     {
-        Debug.Log("PlayerJoin(Lobby&Quit)");
+        //Debug.Log("PlayerJoin(Lobby&Quit)");
+        CManager.GetComponent<ChatManager>().LeaveOther();
         InitPlay();
         Panel[0].SetActive(true);
         Panel[1].SetActive(true);
@@ -196,7 +199,8 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
-        Debug.Log("승리");
+        SoundOnOff.Instance.EffectPlay(2, 5);
+        //Debug.Log("승리");
         isGameOver = true;
         InitPlay();
         Panel[0].SetActive(true);
@@ -207,7 +211,7 @@ public class GameManager : MonoBehaviour
 
     public void GameLose()
     {
-        Debug.Log("패배");
+        //Debug.Log("패배");
         isGameOver = true;
         InitPlay();
         Panel[0].SetActive(true);
@@ -219,10 +223,10 @@ public class GameManager : MonoBehaviour
     {
         if (PhotonNetwork.playerName == "Maker")
         {
-            Invoke("OnPhotonPlayerConnected", 6.0f);
+            Invoke("OnPhotonPlayerConnected", 3.0f);
             return;
         }
-        Invoke("JoinerWait", 6.0f);
+        Invoke("JoinerWait", 2.0f);
     }
 
     void JoinerWait()

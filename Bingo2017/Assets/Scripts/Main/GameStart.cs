@@ -19,6 +19,7 @@ public class GameStart : MonoBehaviour
 
     void SceneChange()
     {
+        SoundOnOff.Instance.EffectPlay(4, 7);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         //async.allowSceneActivation = true;
     }

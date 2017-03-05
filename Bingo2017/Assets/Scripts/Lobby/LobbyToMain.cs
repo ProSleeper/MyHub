@@ -14,6 +14,7 @@ public class LobbyToMain : MonoBehaviour
 
     void SceneChange()
     {
+        SoundOnOff.Instance.EffectPlay(4, 7);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

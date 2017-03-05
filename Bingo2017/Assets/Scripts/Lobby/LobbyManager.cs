@@ -12,6 +12,11 @@ public class LobbyManager : MonoBehaviour
     {
         //async = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1); 
         //async.allowSceneActivation = false;
+        if(!PhotonNetwork.connected)
+        {
+            PhotonNetwork.Reconnect();
+        }
+
         PhotonInit.Instance.RoomDisplay();
     }
 

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class BackButton : MonoBehaviour
 {
-
     public GameObject Panel;
 
     // Use this for initialization
@@ -18,6 +17,7 @@ public class BackButton : MonoBehaviour
     // Update is called once per frame
  	public void PanelOnOff()
     {
+        SoundOnOff.Instance.EffectPlay(4, 7);
 		if (Panel.activeSelf)
 		{
 			Panel.SetActive(false);

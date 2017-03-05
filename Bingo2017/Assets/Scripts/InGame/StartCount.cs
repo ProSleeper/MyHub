@@ -20,6 +20,8 @@ public class StartCount : MonoBehaviour
         {
             count.text = (5 - i).ToString();
             i++;
+            //계이름으로 해봅시다!
+            SoundOnOff.Instance.EffectPlay(i + 4, 1);
             yield return new WaitForSeconds(1);
         }
         this.gameObject.SetActive(false);

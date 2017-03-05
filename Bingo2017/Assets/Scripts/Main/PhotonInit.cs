@@ -9,6 +9,8 @@ public class PhotonInit : MonoBehaviour
 {
 
     public GameObject roomObject;
+    bool isPaused;
+    bool isReset = false;
 
     //싱글톤 코드
     public static PhotonInit Instance;
@@ -38,21 +40,21 @@ public class PhotonInit : MonoBehaviour
     //로비 입장시 실행 함수
     void OnJoinedLobby()
     {
-        Debug.Log("Join Lobby");
+        //Debug.Log("Join Lobby");
         //PhotonNetwork.CreateRoom("MyMatch");
     }
 
     // void OnLeftRoom ()
 	// {
     //     //본인 클라이언트가 나갔을 때 실행됨
-	// 	Debug.Log("left");
+	// 	//Debug.Log("left");
 	// }
 
     //룸 입장시 실행 함순
     // void OnJoinedRoom()
     // {
-    //     Debug.Log("Join Room");
-    //     Debug.Log(PhotonNetwork.room.PlayerCount);
+    //     //Debug.Log("Join Room");
+    //     //Debug.Log(PhotonNetwork.room.PlayerCount);
 
     //     if (PhotonNetwork.room.PlayerCount == 1)        //방을 생성함
     //     {
@@ -62,14 +64,14 @@ public class PhotonInit : MonoBehaviour
     //     {
             
     //     }
-    //     //Debug.Log(PhotonNetwork.player.UserId);
-    //     //Debug.Log(PhotonNetwork.inRoom);
+    //     ////Debug.Log(PhotonNetwork.player.UserId);
+    //     ////Debug.Log(PhotonNetwork.inRoom);
     //     //GameObject.Find("ChatManager").GetComponent<ChatManager>().SendSystemMessage("\n상대방이 들어왔습니다.");
     // }
 
     public void LeaveRoom()
     {
-        Debug.Log("Leave Room");
+        //Debug.Log("Leave Room");
         PhotonNetwork.LeaveRoom();
     }
     
@@ -91,9 +93,9 @@ public class PhotonInit : MonoBehaviour
     //룸이 만들어지거나 없어지거나 했을때 실행되는 함수
     void OnReceivedRoomListUpdate()
     {
-        Debug.Log("RoomUpdate");
-        Debug.Log("RoomCount: " + PhotonNetwork.GetRoomList().Length);
-        Debug.Log("PlayerCount: " + PhotonNetwork.countOfPlayers);
+        //Debug.Log("RoomUpdate");
+        //Debug.Log("RoomCount: " + PhotonNetwork.GetRoomList().Length);
+        //Debug.Log("PlayerCount: " + PhotonNetwork.countOfPlayers);
 
         
         if (SceneManager.GetActiveScene().buildIndex == 1)
@@ -112,11 +114,35 @@ public class PhotonInit : MonoBehaviour
 
         foreach (RoomInfo room in PhotonNetwork.GetRoomList())
         {
-            Debug.Log(room.Name);
+            //Debug.Log(room.Name);
             GameObject Rooms = Instantiate(roomObject);
             JoinRoom roomdata = Rooms.GetComponent<JoinRoom>();
             roomdata.NameSetting(room.Name);
             Rooms.transform.SetParent(GameObject.Find("Grid").transform, false);
+        }
+    }
+    
+    void OnApplicationFocus(bool hasFocus)
+    {
+        //Debug.Log("얻음");
+        isPaused = !hasFocus;
+
+        if (!isPaused && isReset)
+        {
+            //Debug.Log("reset");
+            //Debug.Log(PhotonNetwork.connected);
+            if(!PhotonNetwork.connected)
+            {
+                PhotonNetwork.Reconnect();
+                SceneManager.LoadScene(0);
+            }
+            
+        }
+
+        if (isPaused)
+        {
+            isReset = true;
+            //Debug.Log("잃음");
         }
     }
 
@@ -126,25 +152,25 @@ public class PhotonInit : MonoBehaviour
     //룸 입장을 실패했을때 실행되는 함수
     // void OnPhotonRandomJoinFailed()
     // {
-    // 	Debug.Log("No Room");
+    // 	//Debug.Log("No Room");
     // 	PhotonNetwork.CreateRoom("MyMatch");
     // }
 
     // void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
     // {
-    // 	Debug.Log(PhotonNetwork.room.PlayerCount);
+    // 	//Debug.Log(PhotonNetwork.room.PlayerCount);
     // }
 
     // void ServerConnect()
     // {
     //     if (isPaused)
     //     {
-    //         Debug.Log("Disconnect");
+    //         //Debug.Log("Disconnect");
     //         //PhotonNetwork.Disconnect();
     //     }
     //     else if ((!isPaused) && (!PhotonNetwork.connected))
     //     {
-    //         Debug.Log("Connect");
+    //         //Debug.Log("Connect");
     //         PhotonNetwork.ConnectUsingSettings("v0.9");
     //     }
     // }
@@ -159,6 +185,6 @@ public class PhotonInit : MonoBehaviour
     // }
     // void OnApplicationQuit()
     // {
-    //     Debug.Log("Quit");
+    //     //Debug.Log("Quit");
     // }
 }

@@ -19,8 +19,8 @@ public class AddMob : MonoBehaviour
         if (adBannerView == null)
         {
             AdRequest.Builder builder = new AdRequest.Builder();
-            //AdRequest adRequest = builder.Build();
-            AdRequest adRequest = builder.AddTestDevice(AdRequest.TestDeviceSimulator).AddTestDevice("8B7263AFC1304D36").Build();//FOR TEST
+            AdRequest adRequest = builder.Build();
+            // AdRequest adRequest = builder.AddTestDevice(AdRequest.TestDeviceSimulator).AddTestDevice("8B7263AFC1304D36").Build();//FOR TEST
             adBannerView = new BannerView("ca-app-pub-2081199175882186/2229510153", AdSize.SmartBanner, AdPosition.BottomLeft);
             adBannerView.LoadAd(adRequest);//해당 함수로 광고 요청 반복 가능.
         }

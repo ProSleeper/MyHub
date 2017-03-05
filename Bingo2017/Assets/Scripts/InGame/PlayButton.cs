@@ -12,6 +12,7 @@ public class PlayButton : MonoBehaviour {
 	
 	void ClickPlay()
 	{
+		SoundOnOff.Instance.EffectPlay(4, 7);
 		GameManager.Instance.PlayGame();
 	}
 }

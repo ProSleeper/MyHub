@@ -29,11 +29,11 @@ public class BlockClick : MonoBehaviour
         this.transform.FindChild("Text").gameObject.SetActive(true);
     }
 
-
     public void ClickMyBlock()
     {
         if (!IsClick)
         {
+            SoundOnOff.Instance.EffectPlay(10, 5);
             IsClick = true;
             this.gameObject.GetComponent<Image>().sprite = ChageSprite;
         	this.transform.FindChild("Text").gameObject.SetActive(false);
@@ -52,6 +52,7 @@ public class BlockClick : MonoBehaviour
     {
         if (!IsClick)
         {
+            SoundOnOff.Instance.EffectPlay(11, 5);
             IsClick = true;
             this.gameObject.GetComponent<Image>().sprite = ChageSprite;
         	this.transform.FindChild("Text").gameObject.SetActive(false);

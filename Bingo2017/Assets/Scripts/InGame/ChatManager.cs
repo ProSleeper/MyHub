@@ -26,7 +26,19 @@ public class ChatManager : MonoBehaviour
 
     void SendChatMessage()
     {
-        string msg = "\n" + chatInput.text;
+        SoundOnOff.Instance.EffectPlay(4, 7);
+        string UserType;
+        if (PhotonNetwork.playerName == "Maker")
+        {
+            UserType = "M: ";
+        }
+        else
+        {
+            UserType = "J: ";
+        }
+
+
+        string msg = "\n" + UserType + chatInput.text;
         if (chatInput.text != "")
         {
             chatServer.RPC("LogMsg", PhotonTargets.All, msg);
@@ -34,23 +46,18 @@ public class ChatManager : MonoBehaviour
         }
     }
 
-	// public void JoinOther()
-	// {
-    //     SendSystemMessage("\n상대방이 들어왔습니다.");
-	// }
-
-	// public void LeaveOther()
-	// {
-    //     SendSystemMessage("\n상대방이 나갔습니다.");
-	// }
-
-	public void SendSystemMessage(string message)
+	public void JoinOther()
 	{
-		chatServer.RPC("LogMsg", PhotonTargets.All, message);
+        LogMsg("\n상대방이 들어왔습니다.");
+	}
+
+	public void LeaveOther()
+	{
+        LogMsg("\n상대방이 나갔습니다.");
 	}
 
     [PunRPC]
-    void LogMsg(string msg)
+    public void LogMsg(string msg)
     {
         chatWindow.text = chatWindow.text + msg;
         content.sizeDelta = new Vector2(content.sizeDelta.x, content.sizeDelta.y + 110.0f);

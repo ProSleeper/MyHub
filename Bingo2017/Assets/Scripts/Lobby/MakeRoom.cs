@@ -39,6 +39,7 @@ public class MakeRoom : MonoBehaviour
 
     void RoomMake()
     {
+        SoundOnOff.Instance.EffectPlay(4, 7);
         //룸을 만들면 만든 본인은 룸 안으로 들어가기 때문에 본인은 룸을 볼 수 가 없음
         if (!(MyText.text == ""))
         {

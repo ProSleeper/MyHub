@@ -24,7 +24,7 @@ public class JoinRoom : MonoBehaviour
     void joinroom()
     {
 		PhotonNetwork.JoinRoom(RoomName);
-        
+        SoundOnOff.Instance.EffectPlay(4, 7);
         LManager.GetComponent<LobbyManager>().SceneChange();
 		//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
