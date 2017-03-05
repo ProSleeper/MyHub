@@ -34,6 +34,7 @@ public class AppReset : MonoBehaviour {
     }
 
     //일단 리셋코드이긴 함... 근데 이걸 써먹기가 힘듬...
+    //왜 써먹기가 힘드냐면 폰에서 앱으로 돌아갔을때 바로 다시 실행되는게 아니라 꺼졌다가 다시 실행됨
     public void RestartAppForAOS()
     {
         AndroidJavaObject AOSUnityActivity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");

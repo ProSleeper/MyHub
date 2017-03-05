@@ -13,7 +13,7 @@ public class BlockClick : MonoBehaviour
     GameObject BManager;
     GameObject GManager;
 
-    // Use this for initialization
+    //
     void Start()
     {
         IsClick = false;
@@ -22,6 +22,7 @@ public class BlockClick : MonoBehaviour
         GManager = GameObject.Find("GameManager");
     }
 
+    //블럭 초기화시 쓸 함수
     public void InitBlock()
     {
         IsClick = false;
@@ -29,6 +30,8 @@ public class BlockClick : MonoBehaviour
         this.transform.FindChild("Text").gameObject.SetActive(true);
     }
 
+    //이건 내가 블럭을 클릭했을때 실행할 함수
+    //여기서 상대방에게 ClickOtherBlock함수를 실행시키라고 보내주는것!
     public void ClickMyBlock()
     {
         if (!IsClick)
@@ -48,6 +51,8 @@ public class BlockClick : MonoBehaviour
         }
     }
 
+    //상대방이 블럭 클릭했을때 검사와 클릭상태로 바꿔주는 함수..
+    //근데 위에 ClickMyBlock 함수와 통합해야 할 코드인데 귀찮아서 냅둠..
     public void ClickOtherBlock()
     {
         if (!IsClick)
@@ -63,6 +68,7 @@ public class BlockClick : MonoBehaviour
         }
     }
 
+    //현재 해당 블럭 상태 읽기
     public bool getClick()
     {
         return IsClick;

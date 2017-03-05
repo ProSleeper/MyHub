@@ -172,7 +172,6 @@
      <Compile Include="Assets\Scripts\InGame\GameManager.cs" />
      <Compile Include="Assets\Scripts\InGame\InGameToLobby.cs" />
      <Compile Include="Assets\Scripts\InGame\PlayButton.cs" />
-     <Compile Include="Assets\Scripts\InGame\ReStart.cs" />
      <Compile Include="Assets\Scripts\InGame\StartCount.cs" />
      <Compile Include="Assets\Scripts\InGame\WaitingGame.cs" />
      <Compile Include="Assets\Scripts\Lobby\JoinRoom.cs" />
@@ -183,7 +182,6 @@
      <Compile Include="Assets\Scripts\Main\AddMob.cs" />
      <Compile Include="Assets\Scripts\Main\GameStart.cs" />
      <Compile Include="Assets\Scripts\Main\PhotonInit.cs" />
-     <Compile Include="Assets\Scripts\Main\Portal.cs" />
      <Compile Include="Assets\Scripts\Main\SoundOnOff.cs" />
      <Compile Include="Assets\Scripts\Main\SwapSoundButton.cs" />
      <Compile Include="Assets\Scripts\Main\UIManager.cs" />

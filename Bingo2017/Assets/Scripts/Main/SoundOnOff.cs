@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//사운드 싱글턴 코드.. 아마 읽어보면 다 알거임
+
 public class SoundOnOff : MonoBehaviour
 {
 

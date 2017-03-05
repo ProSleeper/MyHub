@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//볼륨버튼 클릭마다 이미지 바뀌게 만든 코드.. 이렇게 길 필요가 있나 싶네
+
 public class SwapSoundButton : MonoBehaviour
 {
 

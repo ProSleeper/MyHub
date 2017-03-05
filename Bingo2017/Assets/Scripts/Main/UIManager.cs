@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
  
+//유니티 애즈 광고 코드 다른 게임에도 그대로 쓰면 될듯
+
 public class UIManager : MonoBehaviour {
  
     public Button _BtnUnityAds;

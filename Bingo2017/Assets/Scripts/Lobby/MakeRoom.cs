@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//방 만드는 코드
+
 public class MakeRoom : MonoBehaviour
 {
 

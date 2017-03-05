@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//로딩씬만드는 코드
+//간단한 개념 설명
+//0이라는 씬에서 2라는 씬으로 가길 원할때 2라는 씬을 로딩하는동안 사이에 1이라는 로딩씬을 넣어서 2가 다 로딩 되면 2로 넘어가게 만드는것임
+//주의할것은 1이라는 씬에 갔을때 2씬으로 이동하기 위해서 2씬의 위치나 정보를 0에서 저장해두어야 한다
+
 public class LoadingManager : MonoBehaviour
 {
     public Slider loadingBar;

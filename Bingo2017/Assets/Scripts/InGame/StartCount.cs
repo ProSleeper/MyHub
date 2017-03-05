@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//플레이버튼 누르면 실행되는 시작 카운트 코드
+
 public class StartCount : MonoBehaviour
 {
 

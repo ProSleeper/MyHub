@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//게임 스타트 버튼 누르면 Lobby이동 코드
+
 public class GameStart : MonoBehaviour
 {
 

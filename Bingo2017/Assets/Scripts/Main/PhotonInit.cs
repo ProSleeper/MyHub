@@ -69,6 +69,7 @@ public class PhotonInit : MonoBehaviour
     //     //GameObject.Find("ChatManager").GetComponent<ChatManager>().SendSystemMessage("\n상대방이 들어왔습니다.");
     // }
 
+    //방 나갔을때 자동 실행 함수
     public void LeaveRoom()
     {
         //Debug.Log("Leave Room");
@@ -91,6 +92,7 @@ public class PhotonInit : MonoBehaviour
     }
 
     //룸이 만들어지거나 없어지거나 했을때 실행되는 함수
+    //룸의 변화가 있을때 자동으로 실행됨
     void OnReceivedRoomListUpdate()
     {
         //Debug.Log("RoomUpdate");
@@ -104,7 +106,8 @@ public class PhotonInit : MonoBehaviour
         }
     }
 
-    //룸 상태 보여줌
+    //룸 정보를 읽어와서 화면에 뿌려주는 함수
+    //룸 변화가 있을때마다 위에 OnReceivedRoomListUpdate 함수에서 실행시켜줌
     public void RoomDisplay()
     {
         foreach (GameObject item in GameObject.FindGameObjectsWithTag("Room"))
@@ -122,6 +125,7 @@ public class PhotonInit : MonoBehaviour
         }
     }
     
+    //안드로이드에서 앱 실행시 다른앱으로 전환하거나 다시 돌아왔다는것을 확인하는 코드
     void OnApplicationFocus(bool hasFocus)
     {
         //Debug.Log("얻음");

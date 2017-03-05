@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//클릭시 메인화면으로 이동 코드
+
 public class LobbyToMain : MonoBehaviour
 {
 

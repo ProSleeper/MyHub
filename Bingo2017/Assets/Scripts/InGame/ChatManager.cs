@@ -17,13 +17,14 @@ public class ChatManager : MonoBehaviour
         chatServer = GetComponent<PhotonView>();
     }
 
-    // Use this for initialization
+    
     void Start()
     {
         send.onClick.AddListener(SendChatMessage);
         //Debug.Log(PhotonNetwork.isMasterClient);
     }
 
+    //현재 방장인지 들어온 플레이어인지 판단해서 채팅구분
     void SendChatMessage()
     {
         SoundOnOff.Instance.EffectPlay(4, 7);
@@ -56,6 +57,7 @@ public class ChatManager : MonoBehaviour
         LogMsg("\n상대방이 나갔습니다.");
 	}
 
+    //채팅 내용 보내는 함수
     [PunRPC]
     public void LogMsg(string msg)
     {

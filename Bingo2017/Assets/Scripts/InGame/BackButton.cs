@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+//백버튼 누르면 팝업창 나오는 코드
 public class BackButton : MonoBehaviour
 {
     public GameObject Panel;

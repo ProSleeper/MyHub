@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//룸 클릭시 룸으로 입장하게 만드는 코드
+
 public class JoinRoom : MonoBehaviour
 {
     [HideInInspector]

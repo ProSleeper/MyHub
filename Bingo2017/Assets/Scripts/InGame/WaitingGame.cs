@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//상대방 기다릴때 나오는 UI 코드
+
 public class WaitingGame : MonoBehaviour
 {
 	Text WaitText;

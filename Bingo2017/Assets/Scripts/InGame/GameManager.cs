@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//인게임 씬에서 사용되는 Play toLobby 등등 여러가지 UI적 의사소통 관련된 코드
+
+
 public class GameManager : MonoBehaviour
 {
 
@@ -41,6 +44,7 @@ public class GameManager : MonoBehaviour
 		isGameOver = false;
     }
 
+    //Play버튼 실행함수
     public void PlayGame()
     {
         //Debug.Log("play");
@@ -48,23 +52,27 @@ public class GameManager : MonoBehaviour
         GameMessage.RPC("sendMessage", PhotonTargets.Others);
     }
 
+    
     [PunRPC]
     void sendMessage()
     {
         OtherPlayGame();
     }
 
+    //
     public void OtherPlayGame()
     {
         //Debug.Log("get");
         SetPlayGame();
     }
 
+    //현재 내 턴인지 확인
 	public bool getIsMyTurn()
 	{
 		return isMyTurn;
 	}
 
+    //처음 시작시 턴 지정
     public void SetTurn()
     {
         if (PhotonNetwork.playerName == "Maker")
@@ -75,6 +83,7 @@ public class GameManager : MonoBehaviour
         OtherTurn();
     }
 
+    //게임오버가 아닐시 턴 판단
     public void SendTurn()
     {
         
@@ -91,6 +100,7 @@ public class GameManager : MonoBehaviour
         
     }
 
+    //내 턴일때 보여줄 UI
     [PunRPC]
     void MyTurn()
     {
@@ -110,6 +120,7 @@ public class GameManager : MonoBehaviour
         
     }
 
+    //상대턴일때 보여줄 UI
     void OtherTurn()
     {
        
@@ -128,6 +139,7 @@ public class GameManager : MonoBehaviour
          
     }
 
+    //게임 시작시 빙고 초기화와 카운트 시작
     void SetPlayGame()
     {
         InitPlay();
@@ -136,6 +148,7 @@ public class GameManager : MonoBehaviour
         Panel[4].SetActive(true);
     }
 
+    //UI간 상호작용때 항상 모든것을 끄게 만듬
     public void InitPlay()
     {
         Panel[0].SetActive(false);
@@ -149,6 +162,7 @@ public class GameManager : MonoBehaviour
         Panel[8].SetActive(false);
     }
     
+    //포톤 네트워크에서 방에 입장하면 자동으로 실행되는 함수(만들던 그냥 입장하던 둘다 실행)
     void OnJoinedRoom()
     {
         //Debug.Log("Join Room");
@@ -172,6 +186,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log(PhotonNetwork.inRoom);
     }
 
+    //상대 플레이어가 접속했을때 자동 실행 함수
     void OnPhotonPlayerConnected()
     {
         //Debug.Log("PlayerJoin");
@@ -185,6 +200,7 @@ public class GameManager : MonoBehaviour
         PhotonNetwork.playerName = "Maker";
     }
 
+    //상대 플레이어가 나가거나 끊겼을때 자동 실행 함수
     void OnPhotonPlayerDisconnected()
     {
         //Debug.Log("PlayerJoin(Lobby&Quit)");
@@ -197,6 +213,7 @@ public class GameManager : MonoBehaviour
         PhotonNetwork.playerName = "Maker";
     }
 
+    //게임에 이겼을 때 보여줄 UI
     public void GameWin()
     {
         SoundOnOff.Instance.EffectPlay(2, 5);
@@ -209,6 +226,7 @@ public class GameManager : MonoBehaviour
         MakerJoiner(PhotonNetwork.playerName);
     }
 
+    //게임에 졌을 때 보여줄 UI
     public void GameLose()
     {
         //Debug.Log("패배");
@@ -219,6 +237,7 @@ public class GameManager : MonoBehaviour
         MakerJoiner(PhotonNetwork.playerName);
     }
 
+    //게임이 끝나고 방장과 들어온 유저를 판단해서 보여줄 UI
     void MakerJoiner(string div)
     {
         if (PhotonNetwork.playerName == "Maker")
@@ -229,6 +248,7 @@ public class GameManager : MonoBehaviour
         Invoke("JoinerWait", 2.0f);
     }
 
+    //들어온 유저일 경우에 보여줄 UI
     void JoinerWait()
     {
         InitPlay();

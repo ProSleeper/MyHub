@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Play 버튼 누르면 실행 코드
+
 public class PlayButton : MonoBehaviour {
 
 	// Use this for initialization

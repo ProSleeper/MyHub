@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//로비로 나가기
+
 public class InGameToLobby : MonoBehaviour
 {
 

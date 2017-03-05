@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
 
+//애드몹 광고 코드 딱히 설명할건 없고 다른 게임도 이런식으로 넣으면 될듯
+
 public class AddMob : MonoBehaviour
 {
 

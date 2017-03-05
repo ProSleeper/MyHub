@@ -34,11 +34,14 @@ public class BingoManager : MonoBehaviour
 
     void Awake()
     {
+        //포톤뷰는 간단하게 말해서 클라끼리 통신하는거랄까?
         Trade = GetComponent<PhotonView>();
     }
 
+    
     void Start()
     {
+        //배열에 대해서 초기화
         blockRow[0].blockColumn = new GameObject[PANELSIZE];
         blockRow[1].blockColumn = new GameObject[PANELSIZE];
         blockRow[2].blockColumn = new GameObject[PANELSIZE];
@@ -47,6 +50,7 @@ public class BingoManager : MonoBehaviour
 
     }
 
+    //게임 초기화
     public void InitGame()
     {
         InitBingoPanel();
@@ -54,6 +58,7 @@ public class BingoManager : MonoBehaviour
         CountBingo();
     }
 
+    //빙고와 큐브의 숫자들 초기화
     void InitBingoPanel()
     {
         for (int i = 0; i < 25; i++)
@@ -80,6 +85,7 @@ public class BingoManager : MonoBehaviour
         OtherBingo.text = 0.ToString();
     }
 
+    //상대가 블럭을 클릭하고 난 후 내 빙고 로직이 끝나고 내가 빙고가 생겼으면 그걸 보내주는 코드
     public void UpdateOther()
     {
         Trade.RPC("UpdateOtherBingo", PhotonTargets.Others, PlayerData[1]);
@@ -96,6 +102,7 @@ public class BingoManager : MonoBehaviour
         }
     }
 
+    //내가 클릭한 숫자 상대에게 보내주는 코드(클릭 숫자와 현재 빙고 상태를 보냄)
     public void SendNumber(int ClickNumber)
     {
 		PlayerData[0] = ClickNumber;
@@ -103,6 +110,7 @@ public class BingoManager : MonoBehaviour
         Trade.RPC("FindNumber", PhotonTargets.Others, PlayerData);
     }
 
+    //상대가 클릭한 숫자를 내 큐브에서 찾아서 클릭상태로 바꿈
     [PunRPC]
     public void FindNumber(int[] blockNum)
     {
@@ -130,7 +138,7 @@ public class BingoManager : MonoBehaviour
         }
     }
 
-
+    //빙고인지 판별하는 로직(뭔가 더 최적화나 깔끔하게 바꾸고픈데 내가 c#에 대해서 익숙하지 않은듯...)
     public void BingoLogic()
     {
         InitLogic();
@@ -203,6 +211,7 @@ public class BingoManager : MonoBehaviour
         diagonalR = 0;
     }
 
+    //현재 빙고가 몇개째인지 판별
     void CountBingo()
     {
         BingoCount = 0;
@@ -218,6 +227,7 @@ public class BingoManager : MonoBehaviour
 		PlayerData[1] = BingoCount;
         
         //이 부분에서 무언가 순서가 문제인듯...
+        //어찌 돌아가긴 함..
         if (BingoCount >= 5)
         {
             GameManager.Instance.GameWin();
